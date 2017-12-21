@@ -5,6 +5,8 @@
 	<!-- css files -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  
 	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 	<link rel="icon" type="image/x-icon" href="assets/img/han.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +21,17 @@
 					<span class="icon">
 						<i class="fa fa-github"></i>
 					</span>
+					</a>
+			</div>
+			
+			<div class="nav-center">
+				<h1>PLG Informatiemanagement</h1>
 			</div>
 
 			<div class="nav-right nav-menu">
 				<a class="nav-item" href="#about">About</a>
 				<a class="nav-item" href="#projects">Projects</a>
-				<a class="nav-item" href="#social">Social</a>
+				<a class="nav-item" href="#contact">Contact</a>
 			</div>
 
 			<!-- This "nav-toggle" hamburger menu is only visible on mobile -->
@@ -42,7 +49,7 @@
 				<!-- Source: https://flic.kr/p/pAZBNK -->
 				<img class="avatar" src="assets/img/dikw.png">
 			</div>
-			<div class="container"></br>
+			<div class="container"><br>
 				<p class="intro">
 					Welkom bij de Professionele Leergemeenschap Informatiemanagement van de Hogeschool van Arnhem en Nijmegen!
 				</p>
@@ -55,51 +62,57 @@
 				<div class="has-text-centered">
 					<h3 class="title is-3">Projects</h3>
 				</div>
-				
-				<div class="columns is-multiline is-desktop">
-					<!-- Project 1 -->
-					<div class="column">
-						<div class="box project-text">
-							<article>
-								<div>
-									<figure class="image project-figure">
-										<img src="assets/img/project-1.jpg" alt="Image">
-									</figure>
-								</div>
-								<div>			
-									<p>
-										They don’t want us to eat. I told you all this before, when you have a swimming pool, do not use chlorine, use salt water, the healing, salt water is the healing.
-									</p>
-								</div>
-							</article>
-						</div>
-					</div>
-					<!-- Project 2 -->
-					<div class="column">
-						<div class="box project-text">
-							<article>
-								<div>
-									<figure class="image project-figure">
-										<img src="assets/img/project-2.jpg" alt="Image">
-									</figure>
-								</div>
-								<div>			
-									<p>
-										Bless up. Another one. How’s business? Boomin. Don’t ever play yourself. Life is what you make it, so let’s make it.
-									</p>
-								</div>
-							</article>
-						</div>
-					</div>
-				</div>
-			</div>
+      
+      <div class="container">
+      <div class="row">
+        <!-- Topic 1 -->
+      <div class="col-sm-4">
+      <div class="card">
+      <div class="card-block">
+        <h3 class="card-header mis">Management Information</h3>
+        <p class="card-text card-outline-secondary">Informatie voor sturing en beheersing.</p>
+        <p class="card-text"><small class="text-muted">Rachid Tamrouti</small></p>
+        <a href="#" class="btn">Meer ...</a>
+      </div>
+      
+    </div>
+    </div>
+    
+    <!-- Topic 2 -->
+    <div class="col-sm-4">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-header bi">Business Intelligence</h3>
+        <p class="card-text card-outline-secondary">Inspiratie en inzicht voor kennisontwikkeling.</p>
+        <p class="card-text"><small class="text-muted">Wiet Verkooijen</small></p>
+        <a href="#" class="btn">Meer ...</a>
+      </div>
+  </div>
+  </div>
+  
+  <!-- Topic 3 -->
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-header ds">Data Science</h3>
+        <p class="card-text card-outline-secondary">Automatisering van complexe beslissingsfuncties.</p>
+        <p class="card-text"><small class="text-muted">Witek ten Hove</small></p>
+        <a href="#" class="btn">Meer ...</a>
+      </div>
+  </div>
+  </div>
+         </div>  
+      </div>
+    
+  </div>
+  
 		</section>
 
-		<!-- Social -->
-		<section id="social" class="section section-3">
+		<!-- Contact -->
+		<section id="contact" class="section section-3">
 			<div class="container">
 				<div class="has-text-centered">					
-					<h3 class="title is-3">Let's Socialize</h3>
+					<h3 class="title is-3">Contact</h3>
 				</div>
 				<div class="social-container columns">
 					<div class="column is-6 has-text-centered">
@@ -115,6 +128,9 @@
 		</section>
 		
 		<!-- Scripts  -->
-		<script src="controller.js"></script>		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="controller.js"></script>
 	</body>	
 </html>
