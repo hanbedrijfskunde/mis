@@ -98,6 +98,7 @@ a.nav-item:hover {
 .ds {
   background-color: #ff944d;
 }
+
 @media screen and (max-width: 768px) {
 	.nav-menu {
 		background-color: #92C591;
