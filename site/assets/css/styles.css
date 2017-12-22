@@ -63,10 +63,6 @@ a.nav-item:hover {
 	max-width: 256px;
 }
 
-.project-text {
-	/*text-align: justify;*/
-}
-
 .box {
 	background-color: transparent;
 	border: 2px solid rgba(7, 59, 79, 0.5);
@@ -115,5 +111,4 @@ a.nav-item:hover {
 	.nav-toggle span:hover {
 		background-color: #fff;
 	}
-
 }
