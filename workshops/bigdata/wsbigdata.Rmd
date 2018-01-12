@@ -27,9 +27,31 @@ library(plotly)
 
 De data komt uit een <a href="https://www.kaggle.com/c/bnp-paribas-cardif-claims-management" target="_blank">Kaggle competitie</a> en gaat over het proces van claimafhandeling bij een grote verzekeringsmaatschappij. De opdracht van de competitie was om een model te bouwen dat binnenkomende claims kan categoriseren naar 'snel afhandelbaar' en 'nadere controle nodig'. De oorspronkelijk dataset had een omvang van 110 MB (meer dan 100.000 regels). Voor een snellere laadtijd is de dataset met 60% gereduceerd (met behoud van verhoudingen).
 
-```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
-myDF <- read_csv()
-head(myDF, 10)
+```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=TRUE}
+myDF <- read_csv("https://raw.githubusercontent.com/hanbedrijfskunde/im/master/workshops/bigdata/data.csv")
+head(myDF)
 ```
 
+## Kwaliteit data set beoordelen
 
+In bovenstaande tabel hebben we al een klein beetje gekeken naar de kwaliteit van de data. We zien dat er `r dim(myDF)[2]` kolommen zijn en bij iedere kolom is aangegeven om welk type data het gaat. De kolom met de variabele `v1` is bijvoorbeeld van het type double (`dbl`) en dit geeft aan dat het om een getal met decimalen gaat. Kolom `v3` bevat tekst (`chr`) en  `target` natuurlijke getallen (telgetallen - `int`).
+
+Voor uitgebreide kwaliteitsinformatie kunnen de functies `str()` en `summary()` worden gebruikt. Functies worden altijd aangegeven met haakjes waartussen parameters geplaatst kunnen worden. In dit geval is de parameter de dataset `myDF`.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=TRUE}
+## Structuur
+str(myDF[,1:10])
+```
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=TRUE}
+## Samenvatting
+summary(myDF[, 1:10])
+```
+
+<hr>
+**Vraag 1:** Wat doen de functies `head()`, `str()` en `summary()`?
+
+**Vraag 2:** Hoeveel lege waarden bevat de kolom met de variabele `v2`?
+
+**Vraag 3:** Pas de functie `dim()` toe op de dataset. Hoeveel dataregels bevat de dataset? En hoeveel kolommen?
+<hr>
