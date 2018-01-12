@@ -1,0 +1,35 @@
+---
+title: "Workshop Big Data Analytics"
+author: "Witek ten Hove"
+date: 29-01-2018
+output: html_notebook
+---
+
+
+```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+# check.packages function: install and load multiple R packages.
+# Check to see if packages are installed. Install them if they are not, then load them into the R session.
+check.packages <- function(pkg){
+    new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+    if (length(new.pkg)) 
+        install.packages(new.pkg, dependencies = TRUE)
+    sapply(pkg, require, character.only = TRUE)
+}
+
+# Usage example
+packages<-c("tidyverse", "plotly")
+check.packages(packages)
+library(tidyverse)
+library(plotly)
+```
+
+## Data inlezen
+
+De data komt uit een <a href="https://www.kaggle.com/c/bnp-paribas-cardif-claims-management" target="_blank">Kaggle competitie</a> en gaat over het proces van claimafhandeling bij een grote verzekeringsmaatschappij. De opdracht van de competitie was om een model te bouwen dat binnenkomende claims kan categoriseren naar 'snel afhandelbaar' en 'nadere controle nodig'. De oorspronkelijk dataset had een omvang van 110 MB (meer dan 100.000 regels). Voor een snellere laadtijd is de dataset met 60% gereduceerd (met behoud van verhoudingen).
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+myDF <- read_csv()
+head(myDF, 10)
+```
+
+
