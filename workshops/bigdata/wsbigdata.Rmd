@@ -55,3 +55,4 @@ summary(myDF[, 1:10])
 
 **Vraag 3:** Pas de functie `dim()` toe op de dataset. Hoeveel dataregels bevat de dataset? En hoeveel kolommen?
 <hr>
+
