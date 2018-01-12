@@ -21,14 +21,4 @@ Om echter wat comfortabeler te programmeren zijn er zogenaamde integrated develo
 
 **Let op:** Het is belangrijk dat je eerst R en daarna RStudio installeert.
 
-Als je alles hebt geinstalleerd, open RStudio, kopieer de volgende code en:
-
-```
-install.packages(c("gsheet", "rvest", "dplyr", "tidyr", "googleVis", "plotly", "leaflet", "knitr"))
-```
-
-plak het in de console en druk op *Enter*.
-
-
-
-Er worden nu een aantal sets van functies geinstalleerd die we tijdens de sessies gaan gebruiken. Ga nu naar deze notebook.
+Ga nu naar deze notebook.
