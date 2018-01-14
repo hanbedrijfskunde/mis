@@ -28,8 +28,8 @@ library(plotly)
 De data komt uit een <a href="https://www.kaggle.com/c/bnp-paribas-cardif-claims-management" target="_blank">Kaggle competitie</a> en gaat over het proces van claimafhandeling bij een grote verzekeringsmaatschappij. De opdracht van de competitie was om een model te bouwen dat binnenkomende claims kan categoriseren naar 'snel afhandelbaar' en 'nadere controle nodig'. De oorspronkelijk dataset had een omvang van 110 MB (meer dan 100.000 regels). Voor een snellere laadtijd is de dataset met 60% gereduceerd (met behoud van verhoudingen).
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=TRUE}
-myDF <- read_csv("https://raw.githubusercontent.com/hanbedrijfskunde/im/master/workshops/bigdata/data.csv")
-head(myDF)
+firstDF <- read_csv("https://raw.githubusercontent.com/hanbedrijfskunde/im/master/workshops/bigdata/kaggle.csv")
+head(firstDF)
 ```
 
 ## Kwaliteit data set beoordelen
@@ -40,12 +40,12 @@ Voor uitgebreide kwaliteitsinformatie kunnen de functies `str()` en `summary()` 
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=TRUE}
 ## Structuur
-str(myDF[,1:10])
+str(firstDF[,1:10])
 ```
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=TRUE}
 ## Samenvatting
-summary(myDF[, 1:10])
+summary(firstDF[, 1:10])
 ```
 
 <hr>
@@ -55,4 +55,10 @@ summary(myDF[, 1:10])
 
 **Vraag 3:** Pas de functie `dim()` toe op de dataset. Hoeveel dataregels bevat de dataset? En hoeveel kolommen?
 <hr>
+
+```{r}
+secDF <- read_csv("drivendata.csv")
+write_csv(secDF, "drivendata.csv")
+head(secDF)
+```
 
