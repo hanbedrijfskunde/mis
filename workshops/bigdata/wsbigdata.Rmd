@@ -21,6 +21,7 @@ packages<-c("tidyverse", "plotly")
 check.packages(packages)
 library(tidyverse)
 library(plotly)
+library(leaflet)
 ```
 
 ## Data inlezen
@@ -34,9 +35,9 @@ head(firstDF)
 
 ## Kwaliteit data set beoordelen
 
-In bovenstaande tabel hebben we al een klein beetje gekeken naar de kwaliteit van de data. We zien dat er `r dim(myDF)[2]` kolommen zijn en bij iedere kolom is aangegeven om welk type data het gaat. De kolom met de variabele `v1` is bijvoorbeeld van het type double (`dbl`) en dit geeft aan dat het om een getal met decimalen gaat. Kolom `v3` bevat tekst (`chr`) en  `target` natuurlijke getallen (telgetallen - `int`).
+In bovenstaande tabel hebben we al een klein beetje gekeken naar de kwaliteit van de data. We zien dat er `r dim(firstDF)[2]` kolommen zijn en bij iedere kolom is aangegeven om welk type data het gaat. De kolom met de variabele `v1` is bijvoorbeeld van het type double (`dbl`) en dit geeft aan dat het om een getal met decimalen gaat. Kolom `v3` bevat tekst (`chr`) en  `target` natuurlijke getallen (telgetallen - `int`).
 
-Voor uitgebreide kwaliteitsinformatie kunnen de functies `str()` en `summary()` worden gebruikt. Functies worden altijd aangegeven met haakjes waartussen parameters geplaatst kunnen worden. In dit geval is de parameter de dataset `myDF`.
+Voor uitgebreide kwaliteitsinformatie kunnen de functies `str()` en `summary()` worden gebruikt. Functies worden altijd aangegeven met haakjes waartussen parameters geplaatst kunnen worden. In dit geval is de parameter de dataset `firstDF`.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=TRUE}
 ## Structuur
@@ -56,9 +57,48 @@ summary(firstDF[, 1:10])
 **Vraag 3:** Pas de functie `dim()` toe op de dataset. Hoeveel dataregels bevat de dataset? En hoeveel kolommen?
 <hr>
 
-```{r}
-secDF <- read_csv("drivendata.csv")
-write_csv(secDF, "drivendata.csv")
+De volgende data komt uit een <a href="https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/page/25/" target="_blank">Driven Data competitie</a>. Deelnemers worden uitgedaagd door <a href="http://taarifa.org/" target="_blank">Taarifa</a> en het <a href="http://maji.go.tz/" target="_blank">Tanzaniaanse Ministerie voor Water</a> om een model te genereren waarmee voorspeld kan worden welke waterpompen in het land een defect gaan vertonen, zodat ze kunnen worden onderhouden voordat ze daadwerkelijk uitvallen (predictive maintenance).
+
+```{r message=FALSE, warning=FALSE}
+secDF <- read.csv("https://raw.githubusercontent.com/hanbedrijfskunde/im/master/workshops/bigdata/drivendata.csv")
 head(secDF)
 ```
+<hr>
+**Vraag 1:** Beoordeel de kwaliteit van de data.
+<hr>
 
+We kunnen de kwaliteit van de data verder verkennen door deze te visualiseren. R biedt verschillende mogelijkheden:
+
+- eenvoudige grafieken
+
+```{r}
+colors <- c("skyblue", "orange", "tomato")
+p <- ggplot(secDF) +
+  geom_bar(aes(x = region, fill = status_group)) +
+  scale_fill_manual(values = colors) +
+  coord_flip()
+p
+```
+
+<hr>
+- grafieken met interactie:
+
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+ggplotly(p, width = 900)
+```
+
+<hr>
+- geographische weergave met interactie (klik op een cirkel voor meer informatie per waterpunt)
+
+```{r message=FALSE, warning=FALSE, fig.width=10}
+
+selDF <- secDF[1:100,]
+pal <- colorFactor(colors, domain = c("functional", "functional needs repair", "non functional"))
+leaflet(selDF) %>%
+  addTiles() %>%
+  setView(lng = mean(selDF$longitude), lat = mean(selDF$latitude), zoom = 6) %>%
+  addCircleMarkers(~longitude, ~ latitude, popup = ~wpt_name, color = ~pal(status_group))
+```
+
+<hr>
+- en nog veel meer.
