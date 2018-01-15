@@ -21,4 +21,4 @@ Om echter wat comfortabeler te programmeren zijn er zogenaamde integrated develo
 
 **Let op:** Het is belangrijk dat je eerst R en daarna RStudio installeert.
 
-Ga nu naar deze notebook.
+Tijdens de workshop gaan we met deze [notebook](https://hanbedrijfskunde.github.io/im/workshops/bigdata/wsbigdata.nb.html) werken.
