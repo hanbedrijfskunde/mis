@@ -103,4 +103,4 @@ leaflet(selDF) %>%
 <hr>
 - en nog veel meer.
 
-![](Cars_Travolta.gif)
+![](pyramids.gif)
