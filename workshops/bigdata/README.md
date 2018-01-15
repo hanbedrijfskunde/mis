@@ -11,7 +11,7 @@ Deze workshop is ontwikkeld voor mensen die nog geen of zeer beperkte ervaring h
 Witek ten Hove is hoofddocent aan de Hogeschool van Arnhem en Nijmegen en voorzitter van de R-User Group in Nijmegen. Na zijn studie aan de Universiteit van Maastricht heeft hij bij verschillende multinationals gewerkt als business analist, beurshandelaar en commodity trader. Zijn specialisaties zijn onder andere data science, web dev en online/blended learning. 
 
 ## Voorbereiding
-Om direct aan de gang te kunnen gaan tijdens de workshop sessies is het belangrijk dat je R op je computer installeert. Zie [hier (MAC](https://youtu.be/d-u_7vdag-0) en [hier (Windows)](https://youtu.be/EY01x_TJOi4) voor instructies (Engels).
+Om direct aan de gang te kunnen gaan tijdens de workshop sessies is het belangrijk dat je R op je computer installeert. Zie [hier](https://youtu.be/d-u_7vdag-0) (MAC) en [hier](https://youtu.be/EY01x_TJOi4) (Windows) voor instructies (Engels).
 
 Dit is een [downloadsite](https://cloud.r-project.org/) voor R (er zijn meerdere mirrorsites wereldwijd).
 
