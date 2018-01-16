@@ -17,8 +17,9 @@ check.packages <- function(pkg){
 }
 
 # Usage example
-packages<-c("tidyverse", "plotly")
+packages<-c("gsheet", "tidyverse", "plotly", "leaflet")
 check.packages(packages)
+library(gsheet)
 library(tidyverse)
 library(plotly)
 library(leaflet)
@@ -26,10 +27,20 @@ library(leaflet)
 
 ## Data inlezen
 
-De data komt uit een <a href="https://www.kaggle.com/c/bnp-paribas-cardif-claims-management" target="_blank">Kaggle competitie</a> en gaat over het proces van claimafhandeling bij een grote verzekeringsmaatschappij. De opdracht van de competitie was om een model te bouwen dat binnenkomende claims kan categoriseren naar 'snel afhandelbaar' en 'nadere controle nodig'. De oorspronkelijk dataset had een omvang van 110 MB (meer dan 100.000 regels). Voor een snellere laadtijd is de dataset met 60% gereduceerd (met behoud van verhoudingen).
+Voer onderstaande code uit. Om welke data gaat het in deze casus?
+
+```{r}
+url <- "https://docs.google.com/spreadsheets/d/1Cbam0QcFiaktCaABB7zHwJ6TPYAvyhaZqzFQ1hFbX5A/edit?usp=sharing"
+formDF <- gsheet2tbl(url)
+head(formDF)
+```
+
+
+De volgende data komt uit een <a href="https://www.kaggle.com/c/bnp-paribas-cardif-claims-management" target="_blank">Kaggle competitie</a> en gaat over het proces van claimafhandeling bij een grote verzekeringsmaatschappij. De opdracht van de competitie was om een model te bouwen dat binnenkomende claims kan categoriseren naar 'snel afhandelbaar' en 'nadere controle nodig'. De oorspronkelijk dataset had een omvang van 110 MB (meer dan 100.000 regels). Voor een snellere laadtijd is de dataset met 60% gereduceerd (met behoud van verhoudingen).
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=TRUE}
-firstDF <- read_csv("https://raw.githubusercontent.com/hanbedrijfskunde/im/master/workshops/bigdata/kaggle.csv")
+url <- "https://raw.githubusercontent.com/hanbedrijfskunde/im/master/workshops/bigdata/kaggle.csv"
+firstDF <- read_csv(url)
 head(firstDF)
 ```
 
@@ -53,18 +64,30 @@ summary(firstDF[, 1:10])
 **Vraag 1:** Wat doen de functies `head()`, `str()` en `summary()`?
 
 **Vraag 2:** Hoeveel lege waarden bevat de kolom met de variabele `v2`?
-
-**Vraag 3:** Pas de functie `dim()` toe op de dataset. Hoeveel dataregels bevat de dataset? En hoeveel kolommen?
 <hr>
+
+```{r}
+## Pas de functie `dim()` toe op de dataset. Hoeveel dataregels bevat de dataset? En hoeveel kolommen?
+
+```
+
 
 De volgende data komt uit een <a href="https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/page/25/" target="_blank">Driven Data competitie</a>. Deelnemers worden uitgedaagd door <a href="http://taarifa.org/" target="_blank">Taarifa</a> en het <a href="http://maji.go.tz/" target="_blank">Tanzaniaanse Ministerie voor Water</a> om een model te genereren waarmee voorspeld kan worden welke waterpompen in het land een defect gaan vertonen, zodat ze kunnen worden onderhouden voordat ze daadwerkelijk uitvallen (predictive maintenance).
 
 ```{r message=FALSE, warning=FALSE}
-secDF <- read.csv("https://raw.githubusercontent.com/hanbedrijfskunde/im/master/workshops/bigdata/drivendata.csv")
+url <- "https://raw.githubusercontent.com/hanbedrijfskunde/im/master/workshops/bigdata/drivendata.csv"
+secDF <- read.csv(url)
 head(secDF)
 ```
 <hr>
 **Vraag 1:** Beoordeel de kwaliteit van de data.
+
+```{r}
+## Met welke functies kun je de kwaliteit van secDF beoordelen?
+
+
+```
+
 <hr>
 
 We kunnen de kwaliteit van de data verder verkennen door deze te visualiseren. R biedt verschillende mogelijkheden:
