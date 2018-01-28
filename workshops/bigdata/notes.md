@@ -1,4 +1,5 @@
 # 10 minuten
+- Alvast eerste codeblok laten uitvoeren
 - Doel en verwachtingen: programmeren en statistiek minder intimiderend te maken en inspiratie geven voor toepassingen.
 - Wat is een programmeertaal? Welke kennen jullie? Verwijzing naar weefmachines.
 - Talen voor Big Data
