@@ -1,5 +1,6 @@
 - Wat is een programmeertaal? Welke kennen jullie? Verwijzing naar weefmachines.
 - Talen voor Big Data
+- IDE uitleggen
 - Syntax: variabelen declareren en vulllen >> input / output functies
 - Systeem van packages/libraries als sets van functies
 - Inlezen data
