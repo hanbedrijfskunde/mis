@@ -4,7 +4,7 @@
 - Talen voor Big Data
 
 # 5 minuten
-- IDE uitleggen
+- IDE (RStudio) uitleggen
 
 # 10 minuten
 - Syntax: variabelen declareren en vulllen >> input / output functies
