@@ -7,7 +7,7 @@ class histchart {
     chart() {
       return Highcharts.chart(this.id, {
         title: {
-          text: 'Highcharts Histogram'
+          text: 'Normale verdeling'
         },
         xAxis: [{
           title: {
