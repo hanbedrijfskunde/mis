@@ -35,7 +35,7 @@ class histchart {
           yAxis: 0,
           baseSeries: 's1',
           zIndex: -1,
-          Color: 'OrangeRed'
+          color: 'OrangeRed'
         }]
       })
     }
