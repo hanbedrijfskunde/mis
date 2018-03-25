@@ -79,7 +79,7 @@ class bellchart {
           title: {
             text: 'Count'
           },
-          visible: false
+          visible: true
         }, {
           title: {
             text: this.title
