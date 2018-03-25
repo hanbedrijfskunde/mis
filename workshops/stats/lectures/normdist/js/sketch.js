@@ -18,21 +18,21 @@ function setup() {
   }
 
   data = generateData(mu, sd);
-  var chart2 = new histchart('chart2', 'Histogram 2', data).chart();
+  var chart2 = new bellchart('chart2', 'Gauss', data).chart();
 
 
   muSlider.onchange = function() {
     mu = this.value;
     mu_out.innerHTML = mu;
     data = generateData(mu*1, sd*1);
-    new histchart('chart2', 'Histogram 2', data).chart();
+    new bellchart('chart2', 'Gauss', data).chart();
   }
 
   sdSlider.onchange = function() {
     sd = this.value;
     sd_out.innerHTML = sd;
     data = generateData(mu*1, sd*1);
-    new histchart('chart2', 'Histogram 2', data).chart();
+    new bellchart('chart2', 'Gauss', data).chart();
   }
 
 }
