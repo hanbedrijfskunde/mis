@@ -60,7 +60,7 @@ class bellchart {
 
         xAxis: [{
           title: {
-            text: 'Data'
+            text: 'Bins'
           },
           min: -15,
           max: 15,
@@ -77,7 +77,7 @@ class bellchart {
 
         yAxis: [{
           title: {
-            text: 'Data'
+            text: 'Count'
           },
           visible: false
         }, {
@@ -85,7 +85,7 @@ class bellchart {
             text: this.title
           },
           opposite: true,
-          visible: true
+          visible: false
         }],
         plotOptions: {
         series: {
