@@ -72,7 +72,7 @@ class bellchart {
           min: -15,
           max: 15,
           opposite: true,
-          visible: true
+          visible: false
         }],
 
         yAxis: [{
