@@ -104,7 +104,7 @@ class bellchart {
           color: 'rgb(46, 184, 184, 0.8)'
         },
         {
-          name: 'Bell curve asd',
+          name: 'Bell curve',
           type: 'bellcurve',
           data: this.data,
           id: 's1',
