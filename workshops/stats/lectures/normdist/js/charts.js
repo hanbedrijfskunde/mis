@@ -100,8 +100,8 @@ class bellchart {
           xAxis: 0,
           yAxis: 0,
           baseSeries: 's1',
-          zIndex: -1,
-          color: 'SkyBlue'
+          zIndex: 0,
+          color: 'rgb(46, 184, 184, 0.8)'
         },
         {
           name: 'Bell curve asd',
