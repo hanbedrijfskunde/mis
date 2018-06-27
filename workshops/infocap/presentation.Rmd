@@ -1,0 +1,30 @@
+---
+title: "Information Capital"
+author: "Witek ten Hove"
+date: "6/27/2018"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Strategisch Kapitaal
+
+<img src="https://www.dragon1.com/images/strategy-map-template-kaplan-norton.jpg" width="800">
+
+## Van Data tot Verlichting
+
+<img src="https://hanbedrijfskunde.github.io/im/site/assets/img/dikw.png" width="700">
+
+## Van Data tot Informatie
+
+<p data-height="600" data-theme-id="0" data-slug-hash="KeGZMx" data-default-tab="result" data-user="Witusj" data-embed-version="2" data-pen-title="Galton board" class="codepen">See the Pen <a href="https://codepen.io/Witusj/pen/KeGZMx/">Galton board</a> by Witusj (<a href="https://codepen.io/Witusj">@Witusj</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
