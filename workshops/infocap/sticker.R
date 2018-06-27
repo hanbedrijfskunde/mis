@@ -14,7 +14,7 @@ p <- ggplot(data.frame(x = c(-4, 6)), aes(x)) +
 
 p <- p + theme_void() + theme_transparent()
 
-sticker(p, package="InfoCap", p_color = "black", p_size=8, s_x=1, s_y=.75, s_width=1,
+sticker(p, package="InfoCap", p_family = "Acme-Regular", p_color = "black", p_size=10, s_x=1, s_y=.75, s_width=1,
         s_height=.8, filename="logo.png", h_fill="#F9E79F",
         h_color="#E74C3C", spotlight=FALSE)
 
