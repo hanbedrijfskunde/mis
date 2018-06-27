@@ -17,7 +17,7 @@ source("scripts.R")
 
 <img src="https://www.dragon1.com/images/strategy-map-template-kaplan-norton.jpg" width="800">
 
-## Informatiekapitaal
+## Information Capital
 
 <img src="https://hanbedrijfskunde.github.io/im/site/assets/img/dikw.png" width="600">
 
