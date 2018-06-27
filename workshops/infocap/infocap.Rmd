@@ -13,13 +13,13 @@ knitr::opts_chunk$set(echo = FALSE)
 source("scripts.R")
 ```
 
-## Strategisch Kapitaal
+## Bedrijfskunde
 
 <img src="https://www.dragon1.com/images/strategy-map-template-kaplan-norton.jpg" width="800">
 
-## Van Data tot Verlichting
+## Informatiekapitaal
 
-<img src="https://hanbedrijfskunde.github.io/im/site/assets/img/dikw.png" width="700">
+<img src="https://hanbedrijfskunde.github.io/im/site/assets/img/dikw.png" width="600">
 
 ## Van Data tot Informatie
 
@@ -55,4 +55,12 @@ m2
 ```
 <br>
 [Data source](https://fusiontables.google.com/DataSource?docid=147wlDisDp6NnpNxHQpbnjAQ-iW4dR2MAmFdQxYc#rows:id=1)
+
+## Verlichting
+
+<img src="https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA2MS84MzYvb3JpZ2luYWwvbWljcm9ncmFwaC10dWJlcmN1bG9zaXMtYmFjdGVyaWEtanBnLi5qcGc=" width="720">
+
+## Van Data tot Waarde
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/CRISP-DM_Process_Diagram.png/1200px-CRISP-DM_Process_Diagram.png" width="500">
 

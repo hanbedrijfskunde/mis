@@ -1,10 +1,20 @@
 library(hexSticker)
-allData <- read.csv("data/datasets/DatasaurusDozen-wide.tsv", sep = "\t", stringsAsFactors = FALSE)[-1,]
-allData <- data.frame(sapply(allData, as.numeric))
+library(tidyverse)
 
-dnPlot <- select(allData, dino, dino.1)
 
-sticker(expression(plot(dnPlot, cex=.5, cex.axis=0.4, xlab="", ylab="", pch = 18, col = "gold")),
-        package="DataStories", p_size=8, s_x=1, s_y=.8, s_width=1.2, s_height=1,
-        h_fill="#f9690e", h_color="#f39c12",
-        filename="logo.png")
+p <- ggplot(data.frame(x = c(-4, 6)), aes(x)) + 
+  mapply(function(mean, sd, col) {
+    stat_function(fun = dnorm, args = list(mean = mean, sd = sd), col = col)
+  }, 
+  # enter means, standard deviations and colors here
+  mean = c(-1, 1, 3), 
+  sd = c(1, .6, 0.8), 
+  col = c('#013F73', '#f0882f', '#688b2e')
+  )
+
+p <- p + theme_void() + theme_transparent()
+
+sticker(p, package="InfoCap", p_color = "black", p_size=8, s_x=1, s_y=.75, s_width=1,
+        s_height=.8, filename="logo.png", h_fill="#F9E79F",
+        h_color="#E74C3C", spotlight=TRUE)
+
