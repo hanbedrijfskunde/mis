@@ -4,6 +4,7 @@ output: html_notebook
 ---
 
 ### Laad packages
+We gebruiken de functies uit `tidyverse` om makkelijk data te transformeren (`dplyr`) en te visualiseren (`ggplot`). Met `plotly` kunnen de grafieken eenvoudig interactief gemaakt.
 
 ```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 library(tidyverse)
@@ -11,6 +12,7 @@ library(plotly)
 ```
 
 ### Lees data in en beoordeel kwaliteit
+De data komt uit de database van een HRM-systeem en bevat functiegegevens en verzuimdata. Het betreft hier een bancaire organisatie.
 
 ```{r}
 myDF <- read.csv2("hra-data.csv")
@@ -18,7 +20,14 @@ head(myDF)
 summary(myDF)
 ```
 
+
 ## Verander data types, filter en voeg kolommen toe
+
+Een aantal variabelen moet worden omgezet naar het juiste datatype. De variabelen met tijdsinformatie moeten worden omgezet naar het type `Date` en sommige variabelen die eigenlijk numeriek zijn worden als tekst beschouwd.
+
+Er zijn vier peildata. Voor dit onderzoek beperken we ons tot de record van het laatste jaar. Na de Onder de laatst peildatum staan personen die voor de startdatum van het jaar uit dienst zijn getreden. Bovendien zitten er dubbelingen in set. Na toepassing van een filter blijven de juiste records over. 
+
+We voegen nog twee kolommen toe: een kolom aantal contractuele werkdagen en het effectief aantal ziektedagen. Hiervoor gebruiken we de formules van het [CBS](https://www.cbs.nl/nl-nl/deelnemers-enquetes/deelnemers-enquetes/bedrijven/faq/vactures%20en%20ziekteverzuim/hoe-bepaal-ik-het-ziekteverzuimpercentage-)
 
 ```{r}
 myDF$Peildatum <- as.Date(myDF$Peildatum, format="%d-%m-%Y")
@@ -41,6 +50,9 @@ summary(myDF)
 ```
 
 ### Bereken ziekteverzuim
+
+Door de som van de laatste twee kolommen op elkaar te delen, krijgen we het verzuimpercentage.
+
 ```{r}
 tot.aant.ziektedagen <- sum(myDF$FTE.x.ziektedagen, na.rm = TRUE)
 tot.aant.werkdagen <- sum(myDF$FTE.x.werkdagen)
@@ -53,6 +65,11 @@ ziekteverzuim
 ```
 
 ### Visualiseer data
+
+Nu de data opgeschoond is, kunnen we kijken of er opvallende patronen te ontdekken zijn.
+
+#### Vergelijking leeftijdsopbouw per geslacht
+Tot aan de leeftijdsgrens van 50 zijn er meer vrouwen dan mannen. Binnen de organisatie werken al meer vrouwen dan mannen. Als het doorstroompatroon voor beide geslachten gelijk blijft zal het aantal vrouwen in de organisatie nog meer toenemen.
 
 ```{r}
 
@@ -68,17 +85,28 @@ ggplotly(p2, width = 800)
 
 ```
 
+#### Vergelijking ziektedagen versus leeftijdsopbouw en geslacht
+Oudere wernemers neigen zich langer ziek te melden. Of er een statistisch relevante relatie is, moet nog blijken.
+
 ```{r}
 p3 <- ggplot(myDF) +
   geom_point(aes(x=Leeftijd, y=Dagen.afwezig, fill=Man.Vrouw))
 ggplotly(p3, width = 800)
 ```
 
+#### Vergelijking ziektedagen versus organisatieniveau en type contract
+
+Bij 'Banking and Payment' lijken werknemers het langste ziek te zijn. Ook deze relatie moet nog nader onderzocht worden, voordat dit definitief gesteld kan worden.
+
 ```{r}
 p4 <- ggplot(myDF) +
   geom_point(aes(x=Organisatie.niveau.1 , y=Dagen.afwezig, fill=Type.Contract))
 ggplotly(p4, width = 800)
 ```
+
+#### Vergelijking FTE versus geslacht
+
+Er is een duidelijk aanwijzing dat vrouwen meer part-time werken dan mannen. Echter dit moet nog getoetst worden.
 
 ```{r}
 p4 <- ggplot(myDF) +
@@ -87,6 +115,7 @@ ggplotly(p4, width = 800)
 ```
 
 ### Multivariate analysis
+
 
 ```{r}
 grpMV <- group_by(myDF, Man.Vrouw)
@@ -99,6 +128,8 @@ grpTC <- group_by(myDF, Type.Contract)
 summarize(grpTC, Aantal = n(), Gem.Leeftijd = mean(Leeftijd))
 summarize(grpTC, Aantal = n(), Gem.dgn.afw = mean(Dagen.afwezig, na.rm = TRUE))
 ```
+
+Eerder konden een aantal patronen visueel worden waargenomen. Hieronder worden ze getoetst m.b.v. ANOVA. Uiteindelijk blijkt er alleen een statistische relatie te zijn tussen FTE en geslacht. De bijbehorende boxplot deed dit al vermoeden.
 
 ```{r}
 m1<- aov(Dagen.afwezig ~ Type.Contract, data = myDF)
