@@ -27,7 +27,7 @@ Een aantal variabelen moet worden omgezet naar het juiste datatype. De variabele
 
 Er zijn vier peildata. Voor dit onderzoek beperken we ons tot de record van het laatste jaar. Onder de laatst peildatum staan personen die voor de startdatum van het jaar uit dienst zijn getreden. Bovendien zitten er dubbelingen in set. Na toepassing van een filter blijven de juiste records over. 
 
-We voegen nog twee kolommen toe: een kolom aantal contractuele werkdagen en het effectief aantal ziektedagen. Hiervoor gebruiken we de formules van het [CBS](https://www.cbs.nl/nl-nl/deelnemers-enquetes/deelnemers-enquetes/bedrijven/faq/vactures%20en%20ziekteverzuim/hoe-bepaal-ik-het-ziekteverzuimpercentage-)
+We voegen nog twee kolommen toe: een kolom aantal contractuele werkdagen en het effectief aantal ziektedagen. Hiervoor gebruiken we de formules van het [CBS](https://www.cbs.nl/nl-nl/deelnemers-enquetes/deelnemers-enquetes/bedrijven/faq/vactures%20en%20ziekteverzuim/hoe-bepaal-ik-het-ziekteverzuimpercentage-).
 
 ```{r}
 myDF$Peildatum <- as.Date(myDF$Peildatum, format="%d-%m-%Y")
