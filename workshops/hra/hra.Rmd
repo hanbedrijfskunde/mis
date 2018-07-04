@@ -129,7 +129,7 @@ summarize(grpTC, Aantal = n(), Gem.Leeftijd = mean(Leeftijd))
 summarize(grpTC, Aantal = n(), Gem.dgn.afw = mean(Dagen.afwezig, na.rm = TRUE))
 ```
 
-Eerder konden een aantal patronen visueel worden waargenomen. Hieronder worden ze getoetst m.b.v. ANOVA. Uiteindelijk blijkt er alleen een statistische relatie te zijn tussen FTE en geslacht. De bijbehorende boxplot deed dit al vermoeden.
+Eerder konden een aantal patronen visueel worden waargenomen. Hieronder worden ze getoetst m.b.v. ANOVA. Uiteindelijk blijkt er een statistische relatie te zijn tussen FTE en geslacht. De bijbehorende boxplot deed dit al vermoeden. Ook is er een statistische significante positieve relatie tussen leeftijd en ziekteverzuim.
 
 ```{r}
 m1<- aov(Dagen.afwezig ~ Type.Contract, data = myDF)
@@ -142,6 +142,9 @@ m3<- aov(FTE ~ Man.Vrouw, data = myDF)
 summary(m3)
 
 plot(TukeyHSD(m3, conf.level = 0.99),las=1, col = "red")
+
+m4 <- glm(Dagen.afwezig ~ Leeftijd, data = myDF)
+summary(m4)
 
 ```
 
