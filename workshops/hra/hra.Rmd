@@ -1,0 +1,77 @@
+---
+title: "HR Analytics"
+output: html_notebook
+---
+
+### Laad packages
+
+```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+library(tidyverse)
+library(plotly)
+```
+
+### Lees data in en beoordeel kwaliteit
+
+```{r}
+myDF <- read.csv2("hra-data.csv")
+head(myDF)
+summary(myDF)
+```
+
+## Verander data types, filter en voeg kolommen toe
+
+```{r}
+myDF$Peildatum <- as.Date(myDF$Peildatum, format="%d-%m-%Y")
+myDF$Geboortedatum <- as.Date(myDF$Geboortedatum, format="%d-%m-%Y")
+myDF$Einddatum.Bepaalde.Tijd <- as.Date(myDF$Einddatum.Bepaalde.Tijd, format="%d-%m-%Y")
+
+myDF$Stromen <- gsub(" ", "", myDF$Stromen)
+
+myDF$Aantal.ziekmeldingen <- gsub("-", "", myDF$Aantal.ziekmeldingen)
+myDF$Aantal.ziekmeldingen <- as.numeric(gsub(",", ".", myDF$Aantal.ziekmeldingen))
+myDF$Dagen.afwezig <- gsub("-", "", myDF$Dagen.afwezig)
+myDF$Dagen.afwezig <- as.numeric(gsub(",", ".", myDF$Dagen.afwezig))
+
+
+# # Sommige personen hebben de organisatie eerder verlaten
+start.date <- as.Date("2016-01-31")
+myDF <- myDF %>% filter(Peildatum == "2017-01-31", Einddatum.Bepaalde.Tijd > start.date, Stromen == "")
+# 
+# myDF$Fractie.jaar <- with(myDF,
+#                            ifelse(Einddatum.Bepaalde.Tijd < Peildatum,
+#                                   difftime(Einddatum.Bepaalde.Tijd, start.date, units = "days"),
+#                                   365)
+#                            ) / 365
+
+myDF <- mutate(myDF, FTE.x.werkdagen=FTE*365, FTE.x.ziektedagen=FTE*Dagen.afwezig)
+summary(myDF)
+```
+
+### Bereken ziekteverzuim
+```{r}
+tot.aant.ziektedagen <- sum(myDF$FTE.x.ziektedagen, na.rm = TRUE)
+tot.aant.werkdagen <- sum(myDF$FTE.x.werkdagen)
+ziekteverzuim = tot.aant.ziektedagen / tot.aant.werkdagen
+
+tot.aant.ziektedagen
+tot.aant.werkdagen
+ziekteverzuim
+
+```
+
+### Visualiseer data
+
+```{r}
+
+p1 <- ggplot(myDF) +
+  geom_freqpoly(aes(x=Leeftijd, color = Man.Vrouw), binwidth = 2)
+ggplotly(p1, width = 800)
+```
+
+### Multivariate analysis
+
+```{r}
+grpMV <- group_by(myDF, Man.Vrouw)
+summarize(grpMV, Gem.Leeftijd = mean(Leeftijd))
+```
+
