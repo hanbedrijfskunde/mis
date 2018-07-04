@@ -26,7 +26,6 @@ myDF$Geboortedatum <- as.Date(myDF$Geboortedatum, format="%d-%m-%Y")
 myDF$Einddatum.Bepaalde.Tijd <- as.Date(myDF$Einddatum.Bepaalde.Tijd, format="%d-%m-%Y")
 
 myDF$Stromen <- gsub(" ", "", myDF$Stromen)
-
 myDF$Aantal.ziekmeldingen <- gsub("-", "", myDF$Aantal.ziekmeldingen)
 myDF$Aantal.ziekmeldingen <- as.numeric(gsub(",", ".", myDF$Aantal.ziekmeldingen))
 myDF$Dagen.afwezig <- gsub("-", "", myDF$Dagen.afwezig)
@@ -36,12 +35,6 @@ myDF$Dagen.afwezig <- as.numeric(gsub(",", ".", myDF$Dagen.afwezig))
 # # Sommige personen hebben de organisatie eerder verlaten
 start.date <- as.Date("2016-01-31")
 myDF <- myDF %>% filter(Peildatum == "2017-01-31", Einddatum.Bepaalde.Tijd > start.date, Stromen == "")
-# 
-# myDF$Fractie.jaar <- with(myDF,
-#                            ifelse(Einddatum.Bepaalde.Tijd < Peildatum,
-#                                   difftime(Einddatum.Bepaalde.Tijd, start.date, units = "days"),
-#                                   365)
-#                            ) / 365
 
 myDF <- mutate(myDF, FTE.x.werkdagen=FTE*365, FTE.x.ziektedagen=FTE*Dagen.afwezig)
 summary(myDF)
@@ -68,10 +61,56 @@ p1 <- ggplot(myDF) +
 ggplotly(p1, width = 800)
 ```
 
+```{r}
+p2 <- ggplot(myDF) +
+  geom_boxplot(aes(x=Man.Vrouw, y=Leeftijd, fill=Man.Vrouw))
+ggplotly(p2, width = 800)
+
+```
+
+```{r}
+p3 <- ggplot(myDF) +
+  geom_point(aes(x=Leeftijd, y=Dagen.afwezig, fill=Man.Vrouw))
+ggplotly(p3, width = 800)
+```
+
+```{r}
+p4 <- ggplot(myDF) +
+  geom_point(aes(x=Organisatie.niveau.1 , y=Dagen.afwezig, fill=Type.Contract))
+ggplotly(p4, width = 800)
+```
+
+```{r}
+p4 <- ggplot(myDF) +
+  geom_boxplot(aes(x=Man.Vrouw , y=FTE, fill=Man.Vrouw))
+ggplotly(p4, width = 800)
+```
+
 ### Multivariate analysis
 
 ```{r}
 grpMV <- group_by(myDF, Man.Vrouw)
-summarize(grpMV, Gem.Leeftijd = mean(Leeftijd))
+summarize(grpMV, Aantal = n(), Gem.Leeftijd = mean(Leeftijd))
+summarize(grpMV, Aantal = n(), Gem.dgn.afw = mean(Dagen.afwezig, na.rm = TRUE))
+```
+
+```{r}
+grpTC <- group_by(myDF, Type.Contract)
+summarize(grpTC, Aantal = n(), Gem.Leeftijd = mean(Leeftijd))
+summarize(grpTC, Aantal = n(), Gem.dgn.afw = mean(Dagen.afwezig, na.rm = TRUE))
+```
+
+```{r}
+m1<- aov(Dagen.afwezig ~ Type.Contract, data = myDF)
+summary(m1)
+
+m2<- aov(Dagen.afwezig ~ Organisatie.niveau.1, data = myDF)
+summary(m2)
+
+m3<- aov(FTE ~ Man.Vrouw, data = myDF)
+summary(m3)
+
+plot(TukeyHSD(m3, conf.level = 0.99),las=1, col = "red")
+
 ```
 
