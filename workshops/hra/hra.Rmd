@@ -89,8 +89,9 @@ ggplotly(p2, width = 800)
 Oudere wernemers neigen zich langer ziek te melden. Of er een statistisch relevante relatie is, moet nog blijken.
 
 ```{r}
-p3 <- ggplot(myDF) +
-  geom_point(aes(x=Leeftijd, y=Dagen.afwezig, fill=Man.Vrouw))
+p3 <- ggplot(myDF, aes(x=Leeftijd, y=Dagen.afwezig)) +
+  geom_point() +
+  geom_smooth(method='lm')
 ggplotly(p3, width = 800)
 ```
 
